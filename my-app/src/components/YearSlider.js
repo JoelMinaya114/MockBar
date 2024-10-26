@@ -10,7 +10,7 @@ const YearSlider = ({ selectedIndex, years }) => {
             margin: '10px 0',
             fontWeight: 'bold',
             cursor: 'default',
-            color: selectedIndex == index ? 'blue' : 'black',
+            color: selectedIndex === index ? 'blue' : 'black',
           }}
         >
           {year}

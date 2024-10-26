@@ -6,14 +6,17 @@ import LocationSlider from './components/LocationSlider';
 import YearSlider from './components/YearSlider';
 import TravelBoxes from './components/TravelBoxes';
 
-import './App.css'; // Optional: for any additional global styles
 
 const App = () => {
+  const [screen, setScreen] = useState('main');
   const [selectedLetter, setSelectedLetter] = useState('A');
   const [selectedTitle, setSelectedTitle] = useState('');
   const [locationIndex, setLocationIndex] = useState(0);
   const [yearIndex, setYearIndex] = useState(0);
-  const [screen, setScreen] = useState('main');
+
+  const letters = ['A', 'T', 'Z'];
+  const locations = ['BOSTON', 'NYC', 'DC', 'MIAMI', 'SINGAPORE', 'PARIS', 'ROME'];
+  const years = ['2017', '2018', '2019', '2020', '2021', '2022', '2023'];
 
   useEffect(() => {
     const handlePopState = (event) => {
@@ -47,36 +50,20 @@ const App = () => {
     window.history.pushState({ screen: 'main' }, 'Main');
   };
 
-  const letters = ['A', 'T', 'Z'];
-
-  const locations = [
-    'BOSTON',
-    'NYC',
-    'DC',
-    'MIAMI',
-    'SINGAPORE',
-    'PARIS',
-    'ROME',
-  ];
-
-  const years = [
-    '2017',
-    '2018',
-    '2019',
-    '2020',
-    '2021',
-    '2022',
-    '2023',
-    '2024',
-    '2025',
-  ];
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', display: 'flex', height: '100vh', flexDirection: 'column' }}>
+    <div
+      style={{
+        textAlign: 'center',
+        fontFamily: 'Arial, sans-serif',
+        display: 'flex',
+        height: '100vh',
+        flexDirection: 'column',
+      }}
+    >
       {/* Top Slider for Letters */}
-      <div style={{ position: 'relative', marginBottom: '20px', marginTop: '10px' }}>
+      <div style={{ marginBottom: '20px', marginTop: '10px' }}>
         {screen === 'travel' && <h2 style={{ marginBottom: '10px' }}>Travel</h2>}
-
         <input
           type="range"
           min="0"
@@ -85,56 +72,104 @@ const App = () => {
           onChange={(e) => handleSliderChange(letters[parseInt(e.target.value)])}
           style={{ width: '400px', marginLeft: '20px' }}
           step="1"
-
         />
       </div>
 
-      {/* Main content section */}
+      {/* Main Content */}
       {screen === 'main' ? (
         <div style={{ display: 'flex', flex: 1 }}>
-          {/* Left Sidebar for Locations with Vertical Slider */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '10px' }}>
+          {/* Left Sidebar for Locations */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginLeft: '10px',
+              marginTop: '-175px',
+            }}
+          >
             <input
               type="range"
               min="0"
               max={locations.length - 1}
               value={locationIndex}
               onChange={(e) => setLocationIndex(parseInt(e.target.value))}
-              style={{ writingMode: 'bt-lr', transform: 'rotate(90deg)', height: '300px', marginBottom: '10px' }}
+              style={{
+                writingMode: 'bt-lr',
+                transform: 'rotate(90deg)',
+                height: '200px',
+                marginRight: '10px',
+              }}
               step="1"
             />
             <LocationSlider selectedIndex={locationIndex} locations={locations} />
           </div>
 
           {/* Main Boxes Section */}
-          <div style={{ flex: 1, textAlign: 'center', marginLeft: '20px', marginRight: '20px' }}>
+          <div
+            style={{
+              flex: 1,
+              textAlign: 'center',
+              marginLeft: '20px',
+              marginRight: '20px',
+            }}
+          >
             <SliderBar onSliderChange={handleSliderChange} />
             <Boxes selectedLetter={selectedLetter} onBoxSelect={handleBoxSelect} />
-            {selectedTitle && <div id="selected-title" style={{ marginTop: '20px', fontSize: '1.2em' }}>{selectedTitle}</div>}
-          
+            {selectedTitle && (
+              <div
+                id="selected-title"
+                style={{ marginTop: '20px', fontSize: '1.2em' }}
+              >
+                {selectedTitle}
+              </div>
+            )}
           </div>
 
-          {/* Right Sidebar for Years with Vertical Slider */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '10px' }}>
+          {/* Right Sidebar for Years */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginRight: '10px',
+              marginTop: '-170px',
+            }}
+          >
+            <YearSlider selectedIndex={yearIndex} years={years} />
             <input
               type="range"
               min="0"
               max={years.length - 1}
               value={yearIndex}
               onChange={(e) => setYearIndex(parseInt(e.target.value))}
-              style={{ writingMode: 'bt-lr', transform: 'rotate(90deg)', height: '300px', marginBottom: '10px' }}
+              style={{
+                writingMode: 'bt-lr',
+                transform: 'rotate(90deg)',
+                height: '200px',
+                marginLeft: '10px',
+              }}
               step="1"
             />
-            <YearSlider selectedIndex={yearIndex} years={years} />
+
           </div>
         </div>
       ) : (
-        <div style={{ flex: 1, textAlign: 'center', marginLeft: '20px', marginRight: '20px' }}>
-          <button onClick={handleBackButtonClick} style={{ marginBottom: '20px', padding: '10px', fontSize: '1em' }}>Back</button>
+        <div
+          style={{
+            flex: 1,
+            textAlign: 'center',
+            marginLeft: '20px',
+            marginRight: '20px',
+          }}
+        >
           <TravelBoxes onBoxSelect={setSelectedTitle} />
+          <button onClick={handleBackButtonClick} style={{ marginTop: '20px' }}>
+            Back
+          </button>
         </div>
       )}
-
+      
     </div>
   );
 };

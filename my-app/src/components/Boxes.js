@@ -1,48 +1,35 @@
-// src/components/Boxes.js
 import React from 'react';
 
 const Boxes = ({ selectedLetter, onBoxSelect }) => {
-  const boxesData = {
-    A: ['Adventure'],
-    T: ['Travel', 'Car', 'Beauty', 'Sport'],
-    Z: ['Zen'],
+  const categories = {
+    A: ['TRAVEL', 'CAR', 'HOUSE', 'BEAUTY', 'SPORT', 'FOOD', 'TECH', 'CLOTHES', 'HEALTH', 'TOYS', 'EDUCATION', 'FURNITURE'],
+    T: ['TOOLS', 'TABLET', 'TRAINING', 'TOYS', 'TICKET', 'TROPHY', 'TUTORIAL', 'TRAVEL', 'TROPICAL', 'TECH', 'TEA', 'TEXTILES'],
+    Z: ['ZEBRA', 'ZOOM', 'ZEN', 'ZEST', 'ZODIAC', 'ZUCCHINI', 'ZIPPER', 'ZONE', 'ZIRCON', 'ZIGZAG', 'ZERO', 'ZOMBIE'],
   };
 
-  const handleBoxClick = (box) => {
-    onBoxSelect(box);
-  };
-
-  const filteredBoxes = boxesData[selectedLetter] || [];
+  const items = categories[selectedLetter] || [];
 
   return (
-    <div id="boxes-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '30px auto', gap: '10px' }}>
-      {filteredBoxes.map((box, index) => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '500px', margin: '0 auto' }}>
+      {items.slice(0, 12).map((category, index) => (
         <div
           key={index}
-          className="box"
-          onClick={() => handleBoxClick(box)}
+          onClick={() => onBoxSelect(category)}
           style={{
-            width: '100%',
-            height: '50px',
-            border: '2px solid #007bff',
+            width: '100px',
+            height: '100px',
             display: 'flex',
-            justifyContent: 'center',
             alignItems: 'center',
+            justifyContent: 'center',
+            border: '2px solid black',
+            margin: '10px',
             cursor: 'pointer',
-            transition: 'background-color 0.3s, color 0.3s',
-            fontSize: '1.2em',
-            marginBottom: '5px',
+            transition: 'transform 0.3s',
           }}
         >
-          {box}
+          {category}
         </div>
       ))}
-      <div className="box" style={{ width: '100%', height: '50px' }}></div> {/* Empty Box */}
-      <div className="box" onClick={() => handleBoxClick('Leisure')} style={{ width: '100%', height: '50px' }}>Leisure</div>
-      <div className="box" onClick={() => handleBoxClick('Music')} style={{ width: '100%', height: '50px' }}>Music</div>
-      <div className="box" style={{ width: '100%', height: '50px' }}></div> {/* Empty Box */}
-      <div className="box" onClick={() => handleBoxClick('Fitness')} style={{ width: '100%', height: '50px' }}>Fitness</div>
-      <div className="box" onClick={() => handleBoxClick('Dining')} style={{ width: '100%', height: '50px' }}>Dining</div>
     </div>
   );
 };

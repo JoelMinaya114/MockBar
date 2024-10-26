@@ -59,7 +59,7 @@ const Boxes = ({ selectedLetter, onBoxSelect }) => {
 
   return (
     <div style={{ width: '600px', margin: '0 auto' }}>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div style={{ display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
         {items.slice(0, 12).map((category, index) => (
           <div
             key={index}

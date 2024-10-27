@@ -79,12 +79,14 @@ const App = () => {
     '2021',
     '2022',
     '2023',
+    '2024',
+    '2025',
   ];
 
   return (
     <div style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', display: 'flex', height: '100vh', flexDirection: 'column' }}>
       {/* Top Slider for Letters */}
-      <div style={{ marginBottom: '20px', marginTop: '10px', marginRight: '-90px' }}>
+      <div style={{ position: 'relative', marginBottom: '20px', marginTop: '10px' }}>
         {screen === 'travel' && <h2 style={{ marginBottom: '10px' }}>Travel</h2>}
     <div style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', display: 'flex', height: '100vh', flexDirection: 'column' }}>
       {/* Top Slider for Letters */}
@@ -110,14 +112,14 @@ const App = () => {
       {screen === 'main' ? (
         <div style={{ display: 'flex', flex: 1 }}>
           {/* Left Sidebar for Locations with Vertical Slider */}
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '10px', marginTop: '-175px'}}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft: '10px', marginTop: '-20px' }}>
             <input
               type="range"
               min="0"
               max={locations.length - 1}
               value={locationIndex}
               onChange={(e) => setLocationIndex(parseInt(e.target.value))}
-              style={{ writingMode: 'bt-lr', transform: 'rotate(90deg)', height: '200px', marginRight: '10px' }}
+              style={{ writingMode: 'bt-lr', transform: 'rotate(90deg)', height: '300px', marginBottom: '10px' }}
               step="1"
             />
             <LocationSlider selectedIndex={locationIndex} locations={locations} />
@@ -153,21 +155,22 @@ const App = () => {
           </div>
 
           {/* Right Sidebar for Years with Vertical Slider */}
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: '10px', marginTop: '-170px' }}>
-            <YearSlider selectedIndex={yearIndex} years={years} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '10px', marginTop: '-20px' }}>
             <input
               type="range"
               min="0"
               max={years.length - 1}
               value={yearIndex}
               onChange={(e) => setYearIndex(parseInt(e.target.value))}
-              style={{ writingMode: 'bt-lr', transform: 'rotate(90deg)', height: '200px', marginLeft: '10px' }}
+              style={{ writingMode: 'bt-lr', transform: 'rotate(90deg)', height: '300px', marginBottom: '10px' }}
               step="1"
             />
+            <YearSlider selectedIndex={yearIndex} years={years} />
           </div>
         </div>
       ) : (
         <div style={{ flex: 1, textAlign: 'center', marginLeft: '20px', marginRight: '20px' }}>
+          <button onClick={handleBackButtonClick} style={{ marginBottom: '20px', padding: '10px', fontSize: '1em' }}>Back</button>
           <TravelBoxes onBoxSelect={setSelectedTitle} />
         </div>
       )}

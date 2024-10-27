@@ -1,17 +1,17 @@
 const express = require('express');
 const indexRoutes = require('./routes/indexRoutes'); // Make sure the path is correct
-const server = express();
+const app = express();
 
 
 // Middleware
-server.use(express.json());
+app.use(express.json());
 
 // Routes
-server.use('/', indexRoutes);
+app.use('/', indexRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 

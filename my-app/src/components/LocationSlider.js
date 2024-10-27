@@ -2,7 +2,7 @@ import React from 'react';
 
 const LocationSlider = ({ selectedIndex, locations }) => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '10px', marginRight: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '20px', marginRight: '10px' }}>
       {locations.map((location, index) => (
         <div
           key={index}

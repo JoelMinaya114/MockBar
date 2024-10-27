@@ -6,6 +6,7 @@ const TravelBoxes = ({ onBoxSelect }) => {
   const [locationIndex, setLocationIndex] = useState(0);
   const [yearIndex, setYearIndex] = useState(0);
 
+  // Memoizing static data to prevent re-declaration
   const locations = useMemo(() => ['BOSTON', 'NYC', 'DC', 'MIAMI', 'SINGAPORE', 'PARIS', 'ROME'], []);
   const years = useMemo(() => ['2017', '2018', '2019', '2020', '2021', '2022', '2023'], []);
 
@@ -14,6 +15,7 @@ const TravelBoxes = ({ onBoxSelect }) => {
   const [currentLocation, setCurrentLocation] = useState(locations[locationIndex]);
   const [currentYear, setCurrentYear] = useState(years[yearIndex]);
 
+  // Update current location and year when the sliders change
   useEffect(() => {
     setCurrentLocation(locations[locationIndex]);
   }, [locationIndex, locations]);
@@ -21,6 +23,11 @@ const TravelBoxes = ({ onBoxSelect }) => {
   useEffect(() => {
     setCurrentYear(years[yearIndex]);
   }, [yearIndex, years]);
+
+  // Handler function for selecting travel categories
+  const handleBoxSelect = (category) => {
+    onBoxSelect(`${category} in ${currentLocation} (${currentYear})`);
+  };
 
   return (
     <div style={{ textAlign: 'center', fontFamily: 'Arial, sans-serif', display: 'flex', flexDirection: 'column', height: '100vh' }}>
@@ -58,7 +65,7 @@ const TravelBoxes = ({ onBoxSelect }) => {
           {travelCategories.map((category, index) => (
             <div
               key={index}
-              onClick={() => onBoxSelect(`${category} in ${currentLocation} (${currentYear})`)}
+              onClick={() => handleBoxSelect(category)}
               style={{
                 width: '150px',
                 height: '150px',

@@ -58,38 +58,26 @@ const Boxes = ({ selectedLetter, onBoxSelect }) => {
   };
 
   return (
-    <div style={{ width: '600px', margin: '0 auto' }}>
-      <div style={{ display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
-        {items.slice(0, 12).map((category, index) => (
-          <div
-            key={index}
-            onClick={() => handleBoxClick(category)}
-            style={{
-              width: '100px',
-              height: '100px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '2px solid black',
-              margin: '10px',
-              cursor: 'pointer',
-              transition: 'transform 0.3s',
-            }}
-          >
-            {category}
-          </div>
-        ))}
-      </div>
-      {selectedCategory && (
-        <div style={{ textAlign: 'center', marginTop: '20px' }}>
-          <h3>{selectedCategory}</h3>
-          <ul>
-            {selectedDataPoints.map((point, index) => (
-              <li key={index}>{point}</li>
-            ))}
-          </ul>
+    <div style={{ display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', width: '500px', margin: '0 auto' }}>
+      {items.slice(0, 12).map((category, index) => (
+        <div
+          key={index}
+          onClick={() => onBoxSelect(category)}
+          style={{
+            width: '100px',
+            height: '100px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '2px solid black',
+            margin: '10px',
+            cursor: 'pointer',
+            transition: 'transform 0.3s',
+          }}
+        >
+          {category}
         </div>
-      )}
+      ))}
     </div>
   );
 };

@@ -14,7 +14,6 @@ const App = () => {
   const [selectedTitle, setSelectedTitle] = useState('');
   const [locationIndex, setLocationIndex] = useState(0);
   const [yearIndex, setYearIndex] = useState(0);
-  const [screen, setScreen] = useState('main');
 
   useEffect(() => {
     const handlePopState = (event) => {
@@ -27,6 +26,7 @@ const App = () => {
       window.removeEventListener('popstate', handlePopState);
     };
   }, []);
+  
 
   const handleSliderChange = (letter) => {
     setSelectedLetter(letter);
@@ -125,14 +125,8 @@ const App = () => {
           >
             <SliderBar onSliderChange={handleSliderChange} />
             <Boxes selectedLetter={selectedLetter} onBoxSelect={handleBoxSelect} />
-            {selectedTitle && (
-              <div
-                id="selected-title"
-                style={{ marginTop: '20px', fontSize: '1.2em' }}
-              >
-                {selectedTitle}
-              </div>
-            )}
+            {selectedTitle && <div id="selected-title" style={{ marginTop: '20px', fontSize: '1.2em' }}>{selectedTitle}</div>}
+          
           </div>
 
           {/* Right Sidebar for Years with Vertical Slider */}

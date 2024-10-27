@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
 const Boxes = ({ selectedLetter, onBoxSelect }) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedDataPoints, setSelectedDataPoints] = useState([]);
+  //const [setSelectedCategory] = useState(null);
+  //const [setSelectedDataPoints] = useState([]);
 
   const categories = {
     A: ['TRAVEL', 'CAR', 'HOUSE', 'BEAUTY', 'SPORT', 'FOOD', 'TECH', 'CLOTHES', 'HEALTH', 'TOYS', 'EDUCATION', 'FURNITURE'],
@@ -10,6 +10,7 @@ const Boxes = ({ selectedLetter, onBoxSelect }) => {
     Z: ['ZEBRA', 'ZOOM', 'ZEN', 'ZEST', 'ZODIAC', 'ZUCCHINI', 'ZIPPER', 'ZONE', 'ZIRCON', 'ZIGZAG', 'ZERO', 'ZOMBIE'],
   };
 
+  /*
   // Example data points for each category
   const dataPoints = {
     TRAVEL: ['Flight tickets', 'Hotel booking'],
@@ -46,17 +47,20 @@ const Boxes = ({ selectedLetter, onBoxSelect }) => {
     ZERO: ['Zero-calorie drink', 'Zero-waste kit'],
     ZOMBIE: ['Zombie movie', 'Zombie costume'],
   };
+  */
 
   // Retrieve items based on the selected letter
   const items = categories[selectedLetter] || [];
 
+  /*
   // Handle click to show data points
   const handleBoxClick = (category) => {
     setSelectedCategory(category);
     setSelectedDataPoints(dataPoints[category] || ['No data available', 'No data available']);
     onBoxSelect(category); // keep original callback if necessary
   };
-
+  */
+  
   return (
     <div style={{ display: 'grid', gridTemplateRows: 'repeat(4, 1fr)', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', width: '500px', margin: '0 auto' }}>
       {items.slice(0, 12).map((category, index) => (

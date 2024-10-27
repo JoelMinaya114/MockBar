@@ -39,10 +39,12 @@ const App = () => {
     }
   };
 
+  /*
   const handleBackButtonClick = () => {
     setScreen('main');
     window.history.pushState({ screen: 'main' }, 'Main');
   };
+  */
 
   const letters = ['A', 'T', 'Z'];
 

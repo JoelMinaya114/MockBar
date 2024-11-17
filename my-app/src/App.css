@@ -8,21 +8,21 @@ body {
 }
 
 button {
-  padding: 12px 20px; /* Increase padding for better touch experience */
-  margin: 8px; /* Slightly more spacing between buttons */
+  padding: 14px 22px; /* More generous padding for better visibility */
+  margin: 10px; /* Consistent spacing between buttons */
   cursor: pointer;
   font-weight: bold;
-  color: #fff; /* White text for better contrast */
-  background-color: #00796b; /* Teal color for a modern look */
+  color: #ffffff; /* White text for contrast */
+  background-color: #0288d1; /* Vibrant blue for a striking appearance */
   border: none;
-  border-radius: 8px; /* Rounder corners for a softer appearance */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  border-radius: 10px; /* More pronounced rounding for softness */
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow for depth */
   transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
-  font-family: 'Arial', serif; /* Fancy serif font for buttons */
+  font-family: 'Arial', sans-serif; /* Elegant decorative font for buttons */
 }
 
 button:hover {
-  background-color: #004d40; /* Darker shade of teal on hover */
+  background-color: #01579b; /* Deeper, rich blue for hover effect */
   transform: translateY(-3px); /* Subtle lift effect on hover */
 }
 
@@ -31,12 +31,17 @@ button:active {
 }
 
 #selected-title {
-  font-size: 1.75em; /* Slightly larger font for emphasis */
-  color: #004d40; /* Dark teal color for readability */
-  text-align: center; /* Center-align for a balanced look */
-  padding: 10px 0;
-  background-color: #b2dfdb; /* Light teal background for contrast */
-  border-radius: 6px; /* Match the button’s style */
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  font-family: 'Arial', serif; /* Fancy serif font for the title */
+  font-size: 1.85em; /* Slightly larger font for stronger emphasis */
+  color: #0288d1; /* Bright blue color for readability */
+  text-align: center;
+  padding: 12px 0;
+  background-color: #b3e5fc; /* Light, vibrant blue for contrast */
+  border-radius: 8px; /* Match the button’s style */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  font-family: 'Cinzel Decorative', serif; /* Elegant decorative font for the title */
+}
+
+/* Add a subtle gradient to the body for depth */
+body {
+  background: linear-gradient(135deg, #d1eff2, #ffffff);
 }
